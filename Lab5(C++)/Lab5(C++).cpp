@@ -3,25 +3,25 @@ using namespace std;
 
 int main() {
 	setlocale(LC_ALL, "rus");
-	int n, b, m;
+	int n, N, m;
 	cout << "Введите натуральное число: ";
 	cin >> n;
-	b = n;
+	N = n;
 	cout << "Натуральные числа, которые меньше введённого числа и взаимно простые с ним: " << endl;
 	for (int i = 1; i < n; i++) {
 		m = i;
-		while (m != 0 && b != 0) {
-			if (m > b) {
-				m = m % b;
+		while (m != 0 && N != 0) {
+			if (m > N) {
+				m = m % N;
 			}
 			else {
-				b = b % m;
+				N = N % m;
 			}
 		}
-		if ((b + m) == 1) {
+		if ((N + m) == 1) {
 			cout << i << endl;
 		}
-		b = n;
+		N = n;
 	}
 	system("pause");
 	return 0;

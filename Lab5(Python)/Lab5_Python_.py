@@ -1,16 +1,16 @@
 n = int(input("Введите натуральное число: "))
 i = 1
-b = n
+N = n
 
 print("Натуральные числа, которые меньше введённого числа и взаимно простые с ним: ")
 for i in range(n):
   m=i
-  while m != 0 and b != 0:
-    if m > b:
-        m = m % b
+  while m != 0 and N != 0:
+    if m > N:
+        m = m % N
     else:
-        b = b % m
+        N = N % m
 
-  if (b + m) == 1:
+  if (N + m) == 1:
       print (i)
-  b=n
+  N=n
