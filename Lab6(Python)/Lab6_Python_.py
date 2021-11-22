@@ -6,7 +6,6 @@ def integral_sum(a, b, n):
     return sum
 
 
-
 def integral_arctg(a, b, n):
     h = (b - a) / n
     arctg = 0
