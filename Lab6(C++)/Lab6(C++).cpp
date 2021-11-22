@@ -25,6 +25,7 @@ int main() {
 	return 0;
 }
 
+
 double integral_sum(double a, double b, double n) {
 	double sum;
 	sum = integral_arctg(a, b, n) + integral_sin(0, M_PI, n);
