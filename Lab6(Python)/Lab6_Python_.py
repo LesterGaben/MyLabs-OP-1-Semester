@@ -1,6 +1,11 @@
 import math
 
 
+def integral_sum(a, b, n):
+    sum = integral_arctg(a, b, n) + integral_sin(0, math.pi, n)
+    return sum
+
+
 def integral_arctg(a, b, n):
     h = (b - a) / n
     arctg = 0
@@ -30,5 +35,4 @@ n = int(input("Введите целое число, большее или ра�
 while (n < 1):
     n = int(input("Введите целое число, большее или равное 1: "))
 
-sum = integral_arctg(a, b, n) + integral_sin(0, math.pi, n)
-print("Приблизительная сумма интегралов: " + str(sum))
+print("Приблизительная сумма интегралов: " + str(integral_sum(a,b,n)))

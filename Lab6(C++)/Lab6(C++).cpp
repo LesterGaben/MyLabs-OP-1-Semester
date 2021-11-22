@@ -3,6 +3,7 @@
 #include <math.h>
 using namespace std;
 
+double integral_sum(double a, double b, double n);
 double integral_arctg(double a, double b, double n);
 double integral_sin(double a, double b, double n);
 
@@ -19,10 +20,15 @@ int main() {
 		cout << "Введите целое число, большее или равное 1: ";
 		cin >> n;
 	}
-	sum = integral_arctg(a, b, n) + integral_sin(0, M_PI, n);
-	cout << "Приблизительная сумма интегралов: " << sum << endl;
+	cout << "Приблизительная сумма интегралов: " << integral_sum(a, b, n) << endl;
 	system("pause");
 	return 0;
+}
+
+double integral_sum(double a, double b, double n) {
+	double sum;
+	sum = integral_arctg(a, b, n) + integral_sin(0, M_PI, n);
+	return sum;
 }
 
 double integral_arctg(double a, double b, double n) {
