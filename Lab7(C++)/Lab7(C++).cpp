@@ -1,23 +1,39 @@
 ﻿#include <iostream>
+#include <iomanip>
 #include <ctime>
 #include <cstdlib>
 using namespace std;
 
-void input_arrays(int*, int*, int n);
+void filling_arrays_A_and_C(int*, int*, int n);
 void creating_array_D(int*, int*, int*, int n);
+void output_arrays(int*, int n);
+void founding_min_and_last_element_in_array_D_and_output(int*, int n, int*, int*);
+void changes_to_array_D(int*, int n, int*, int*);
 
 int main() {
 	setlocale(LC_ALL, "rus");
 	int *A = NULL, *C = NULL, *D = NULL;
-	int n;
+	int n, min_in_D, num_min_in_D;
 	cout << "Введите желаемое количество элементов в массивах: ";
 	cin >> n ;
 	cout << endl;
 	A = new int[n];
 	C = new int[n];
 	D = new int[n];
-	input_arrays(A, C, n);
+	filling_arrays_A_and_C(A, C, n);
 	creating_array_D(A, C, D, n);
+	cout << "Массив A:";
+	output_arrays(A, n);
+	cout << endl << "Массив C:";
+	output_arrays(C, n);
+	cout << endl << "Массив D:";
+	output_arrays(D, n);
+	cout << endl << endl;
+	founding_min_and_last_element_in_array_D_and_output(D, n, &min_in_D, &num_min_in_D);
+	changes_to_array_D(D, n, &min_in_D, &num_min_in_D);
+	cout << "Массив D после изменений:";
+	output_arrays(D, n);
+	cout << endl;
 	delete[] A;
 	delete[] C;
 	delete[] D;
@@ -25,27 +41,15 @@ int main() {
 	return 0;
 }
 
-void input_arrays(int A[], int C[], int n) {
+void filling_arrays_A_and_C(int A[], int C[], int n) {
 	srand(time(NULL));
 	for (int i = 0; i < n; i++) {
 		A[i] = rand() % 99 + 1;
 		C[i] = rand() % 99 + 1;
 	}
-	cout << "Массив A: ";
-	for (int i = 0; i < n; i++) {
-		cout << A[i] << " ";
-	}
-	cout << endl;
-	cout << "Массив C: ";
-	for (int i = 0; i < n; i++) {
-		cout << C[i] << " ";
-	}
-	cout << endl << endl;
 }
 
 void creating_array_D(int A[], int C[], int D[], int n) {
-	int min = 100, i_of_min = 0, end_D;
-	cout << "Массив D до изменений: ";
 	for (int i = 0; i < n; i++) {
 		if (A[i] > C[i]) {
 			D[i] = A[i];
@@ -56,22 +60,29 @@ void creating_array_D(int A[], int C[], int D[], int n) {
 		else {
 			D[i] = 0;
 		}
-		cout << D[i] << " ";
-		if (min > D[i]) {
-			min = D[i];
-			i_of_min = i;
+	}
+}
+
+void output_arrays(int x[], int n) {
+	for (int i = 0; i < n; i++) {
+		cout << setw(3) << x[i];
+	}
+}
+
+void founding_min_and_last_element_in_array_D_and_output(int D[], int n, int* min_in_D, int* num_min_in_D) {
+	*min_in_D = 100;
+	for (int i = 0; i < n; i++) {
+		if (*min_in_D > D[i]) {
+			*min_in_D = D[i];
+			*num_min_in_D = i;
 		}
 	}
-	cout << endl;
-	end_D = D[n - 1];
-	D[n - 1] = min;
-	D[i_of_min] = end_D;
-	cout << "Последний элемент массива D: " << end_D << endl;
-	cout << "Минимальный элемент массива D: " << min << endl;
-	cout << "Номер размещения минимального элемента массива D: " << i_of_min + 1 << endl << endl;
-	cout << "Массив D после изменений: ";
-	for (int i = 0; i < n; i++) {
-		cout << D[i] << " ";
-	}
-	cout << endl;
+	cout << "Минимальный элемент в массиве D: " << *min_in_D << endl;
+	cout << "Номер минимального элемента в массиве D: " << *num_min_in_D + 1 << endl;
+	cout << "Последний элемент в массиве D: " << D[n - 1] << endl << endl;
+}
+
+void changes_to_array_D(int D[], int n, int* min_in_D, int* num_min_in_D) {
+	D[*num_min_in_D] = D[n - 1];
+	D[n - 1] = *min_in_D;
 }
