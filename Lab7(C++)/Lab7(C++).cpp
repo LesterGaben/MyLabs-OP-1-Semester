@@ -24,16 +24,15 @@ int main() {
 	creating_array_D(A, C, D, n);
 	cout << "Массив A:";
 	output_arrays(A, n);
-	cout << endl << "Массив C:";
+	cout << "Массив C:";
 	output_arrays(C, n);
-	cout << endl << "Массив D:";
+	cout << "Массив D:";
 	output_arrays(D, n);
-	cout << endl << endl;
+	cout << endl;
 	founding_min_and_last_element_in_array_D_and_output(D, n, &min_in_D, &num_min_in_D);
 	changes_to_array_D(D, n, &min_in_D, &num_min_in_D);
 	cout << "Массив D после изменений:";
 	output_arrays(D, n);
-	cout << endl;
 	delete[] A;
 	delete[] C;
 	delete[] D;
@@ -67,6 +66,7 @@ void output_arrays(int x[], int n) {
 	for (int i = 0; i < n; i++) {
 		cout << setw(3) << x[i];
 	}
+	cout << endl;
 }
 
 void founding_min_and_last_element_in_array_D_and_output(int D[], int n, int* min_in_D, int* num_min_in_D) {
