@@ -35,7 +35,6 @@ int main() {
 
 
 void matrix_generation(int* array[], int n) {
-	srand(time(NULL));
 	for (int i = 0; i < n; i++) {
 		array[i] = new int[n];
 	}
@@ -43,6 +42,7 @@ void matrix_generation(int* array[], int n) {
 
 
 void filling_the_matrix_A(int* array[], int n) {
+	srand(time(NULL));
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			array[i][j] = rand() % 100 + 1;
