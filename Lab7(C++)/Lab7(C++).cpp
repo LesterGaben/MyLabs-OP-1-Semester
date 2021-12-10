@@ -7,7 +7,7 @@ using namespace std;
 void filling_arrays_A_and_C(int*, int*, int n);
 void creating_array_D(int*, int*, int*, int n);
 void output_arrays(int*, int n);
-void founding_min_and_last_element_in_array_D_and_output(int*, int n, int*, int*);
+void find_min_and_last_element_in_array_D(int*, int n, int*, int*);
 void changes_to_array_D(int*, int n, int*, int*);
 
 int main() {
@@ -29,7 +29,10 @@ int main() {
 	cout << "Массив D:";
 	output_arrays(D, n);
 	cout << endl;
-	founding_min_and_last_element_in_array_D_and_output(D, n, &min_in_D, &num_min_in_D);
+	find_min_and_last_element_in_array_D(D, n, &min_in_D, &num_min_in_D);
+	cout << "Минимальный элемент в массиве D: " << min_in_D << endl;
+	cout << "Номер минимального элемента в массиве D: " << num_min_in_D + 1 << endl;
+	cout << "Последний элемент в массиве D: " << D[n - 1] << endl << endl;
 	changes_to_array_D(D, n, &min_in_D, &num_min_in_D);
 	cout << "Массив D после изменений:";
 	output_arrays(D, n);
@@ -69,7 +72,7 @@ void output_arrays(int x[], int n) {
 	cout << endl;
 }
 
-void founding_min_and_last_element_in_array_D_and_output(int D[], int n, int* min_in_D, int* num_min_in_D) {
+void find_min_and_last_element_in_array_D(int D[], int n, int* min_in_D, int* num_min_in_D) {
 	*min_in_D = 100;
 	for (int i = 0; i < n; i++) {
 		if (*min_in_D > D[i]) {
@@ -77,9 +80,6 @@ void founding_min_and_last_element_in_array_D_and_output(int D[], int n, int* mi
 			*num_min_in_D = i;
 		}
 	}
-	cout << "Минимальный элемент в массиве D: " << *min_in_D << endl;
-	cout << "Номер минимального элемента в массиве D: " << *num_min_in_D + 1 << endl;
-	cout << "Последний элемент в массиве D: " << D[n - 1] << endl << endl;
 }
 
 void changes_to_array_D(int D[], int n, int* min_in_D, int* num_min_in_D) {
