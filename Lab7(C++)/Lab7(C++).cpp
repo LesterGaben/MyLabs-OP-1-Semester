@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 #include <iomanip>
 #include <ctime>
-#include <cstdlib>
 using namespace std;
 
 void filling_arrays_A_and_C(int*, int*, int n);

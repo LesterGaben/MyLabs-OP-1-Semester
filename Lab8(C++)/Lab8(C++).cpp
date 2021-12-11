@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include <ctime>
-#include <cstdlib>
 using namespace std;
 
 void matrix_generation(int**, int n);
